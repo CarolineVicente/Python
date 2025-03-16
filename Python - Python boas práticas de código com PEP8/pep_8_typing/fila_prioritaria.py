@@ -1,8 +1,10 @@
 from fila_base import FilaBase
+from constantes import CODIGO_PRIORITARIO
+from typing import Dict, Union
 
 class FilaPrioritaria(FilaBase):   
     def gera_senha_atual(self):
-        self.senha_atual = f'PR {self.codigo}'
+        self.senha_atual = f'{CODIGO_PRIORITARIO}{self.codigo}'
 
     def atualiza_fila(self) -> None:
         self.reseta_fila()
@@ -18,7 +20,7 @@ class FilaPrioritaria(FilaBase):
         if flag != 'detail':
             estatistica = {f'{agencia}-{dia}': len(self.clientes_atendidos)}
         else:
-            estatistica = {}
+            estatistica :  Dict [str, Union[str], str, int] = {}
             estatistica['dia'] = dia
             estatistica['agencia'] = agencia
             estatistica['clientes_atendidos'] = self.clientes_atendidos
